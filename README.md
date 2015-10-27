@@ -23,4 +23,9 @@ Feed it a Raw-File created by using mode2 -d /dev/lirc0 -m - examples are in the
 Use: php decode.php INPUTFILE OUTPUTFILE
 uses an INPUTFILE with a list similar to encoded_values which has to has the format KEY_NAME;BINARY and creates a config OUTPUTFILE with these keys in it
 
+
+##Links
+http://alexba.in/blog/2013/01/06/setting-up-lirc-on-the-raspberrypi/ - Alex has everything about RPi, Lirc including wiring, config etc - used his basic setup
+http://www.instructables.com/id/Reverse-engineering-of-an-Air-Conditioning-control/?ALLSTEPS - Used mats basic suggestions about understanding the IR-code etc
+
 If you want to improve something - let me know - usually i don't bite
