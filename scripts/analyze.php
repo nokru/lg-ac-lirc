@@ -1,31 +1,28 @@
 <?php
 
-define("LOWVAL",520);
-define("HIGHVAL",1530);
-define("INTRO",4130);
-define("SEPERATE",8900);
-define("WIDTH",125);
+require_once("config.php");
+
 
 
 function get_element_value($element){
 	//check low
 	if((LOWVAL-WIDTH <= $element) && ($element <= LOWVAL+WIDTH)){
-		return("0");
+		return(LOWCHAR);
 	}
 
 	//check high
 	else if((HIGHVAL-WIDTH <= $element) && ($element <= HIGHVAL+WIDTH)){
-		return("1");
+		return(HIGHCHAR);
 	}
 
 	//check seperate
 	else if((SEPERATE-WIDTH <= $element) && ($element <= SEPERATE+WIDTH)){
-		return("S-");
+		return(SEPERATECHAR);
 	}
 
 	//check intro
 	else if((INTRO-WIDTH <= $element) && ($element <= INTRO+WIDTH)){
-		return('I-');
+		return(INTROCHAR);
 	}
 
 	//if nothing return element
@@ -38,7 +35,7 @@ $command_string = "";
 
 	foreach ($elements as $element_id => $element) {
 		
-		//every first item AFTER the Seperator and Init is 0 - skip that
+		//every first item of a pair AFTER the Seperator and Init is 0 - skip that
 		if($element_id >= 2){
 			if($element_id % 2 == 0){
 				continue;
@@ -49,7 +46,7 @@ $command_string = "";
 		$element_value = get_element_value($element);
 	
 		//check if valid output
-		if(in_array($element_value, array("0","1","S-","I-"))){
+		if(in_array($element_value, array(LOWCHAR,HIGHCHAR,INTROCHAR,SEPERATECHAR))){
 			$command_string = $command_string.$element_value;
 		}
 		else{
@@ -94,7 +91,7 @@ $elements = array_values($elements);
 
 //replace key-press delay with KEYPRESS
 foreach($elements as $elements_id => $element_value){
-	if($element_value > SEPERATE*3)
+	if($element_value > SEPERATE*MULTI)
 		$elements[$elements_id] = "NEWKEY";
 }
 
