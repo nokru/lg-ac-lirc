@@ -12,4 +12,26 @@ define("HIGHCHAR","1");
 define("INTROCHAR","I-");
 define("SEPERATECHAR","S-");
 
+define("TEMPLATE","
+
+# created by nokru
+# https://github.com/nokru/lg-ac-lirc
+
+begin remote
+
+  name LG_AC
+  flags RAW_CODES|CONST_LENGTH
+  eps 30
+  aeps 100
+
+  gap 513079
+
+      begin raw_codes
+
+$CODES$
+
+      end raw_codes
+
+end remote");
+
 ?>
